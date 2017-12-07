@@ -8,7 +8,7 @@ type alias State =
   , todos: List String
   }
 
-// actions
+-- actions
 type Msg
   = Edit String
   | Add
@@ -19,7 +19,7 @@ init =
   , todos = []
   }
 
-// render
+-- render
 view state =
   div []
     [ label [] [ text <| Maybe.withDefault "Без названия" state.title ]
@@ -34,7 +34,7 @@ view state =
       ]
     ]
 
-// reducer
+-- reducer
 update msg state =
   case msg of
     Edit newTodo ->
