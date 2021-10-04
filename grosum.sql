@@ -47,3 +47,14 @@ end;
 end;
 
 CREATE OR REPLACE function grosum(input number) return number parallel_enable aggregate using GrosumImpl;
+
+-- Пример использования
+with change(time, diff) as (
+    select 1, 10 from dual union all
+    select 2, -8 from dual union all
+    select 3, -5 from dual union all
+    select 4, 4 from dual
+)
+select time
+     , grosum(diff) over (order by time) as balance
+from change
